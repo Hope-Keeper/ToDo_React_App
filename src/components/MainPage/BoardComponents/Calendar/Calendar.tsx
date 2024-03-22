@@ -92,7 +92,7 @@ const Calendar = ({
       const fullDay = `${year}-${month}-${day >= 10 ? day : '0' + day}`
 
       let newStart
-      let newEnd = 0
+      let newEnd: any = 0
 
       // True & True
       if (period?.start && period?.end) {
