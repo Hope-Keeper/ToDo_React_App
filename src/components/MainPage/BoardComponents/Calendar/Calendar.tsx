@@ -20,7 +20,7 @@ import {
 } from 'react'
 import Days from './Days'
 import Week from './Week'
-import moment from 'jalali-moment'
+import moment, { type MomentInput } from 'jalali-moment'
 import { DatepickerContext } from '../../../../contexts/DateContextProvider'
 import CalendarStartIconSvg from '../../../Common/Icons/CalendarIcons/CalendarStartIconSvg'
 import CalendarEndIconSvg from '../../../Common/Icons/CalendarIcons/CalendarEndIconSvg'
@@ -90,7 +90,8 @@ const Calendar = ({
       month = moment(date).month() + 1,
       year = moment(date).year()
     ) => {
-      const fullDay = `${year}-${month}-${day >= 10 ? day : '0' + day}`
+      const fullDay: null | undefined | MomentInput =
+        `${year}-${month}-${day >= 10 ? day : '0' + day}`
 
       let newStart
       let newEnd: any = 0
