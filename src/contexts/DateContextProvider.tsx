@@ -1,28 +1,30 @@
+/* eslint-disable @typescript-eslint/member-delimiter-style */
+/* eslint-disable @typescript-eslint/indent */
 import { createContext, useMemo, useState } from 'react'
 import { type Period } from '../types'
 import { type MomentInput } from 'jalali-moment'
 
 interface DatepickerStore {
-  days?: { previous?: number[], current?: number[], next?: number[] }
-  value?: {
-    startDate?: null
-    endDate?: null
+  days: { previous: number[]; current: number[]; next: number[] }
+  value: {
+    startDate: null
+    endDate: null
   }
-  period?: Period
-  changePeriod?: (period?: Period) => void
-  dayHover?: string | null
-  changeDayHover?: (day?: string | null) => void
-  changeDatepickerValue?: (value?: {
+  period: Period
+  changePeriod: (period: Period) => void
+  dayHover: string | null | undefined
+  changeDayHover: (day?: string | null) => void
+  changeDatepickerValue: (value?: {
     startDate?: MomentInput | null
     endDate?: MomentInput | null
   }) => void
-  daysChangeF?:
-  | ((days?: {
-    previous?: number[]
-    current?: number[]
-    next?: number[]
-  }) => void)
-  | undefined
+  daysChangeF:
+    | ((days: {
+        previous: number[]
+        current: number[]
+        next: number[]
+      }) => void)
+    | undefined
   minDate?: string
   maxDate?: string
   disabledDates?: string
@@ -35,7 +37,7 @@ export const DatepickerContext = createContext<DatepickerStore>({
     endDate: null
   },
   period: { start: '', end: '' },
-  changePeriod: (_period?: Period) => {},
+  changePeriod: (_period: Period) => {},
   dayHover: null,
   changeDayHover: (_day?: string | null | undefined) => {},
   changeDatepickerValue: (_value?: {
@@ -46,7 +48,10 @@ export const DatepickerContext = createContext<DatepickerStore>({
     previous?: number[]
     current?: number[]
     next?: number[]
-  }) => {}
+  }) => {},
+  minDate: '',
+  maxDate: '',
+  disabledDates: ''
 })
 
 const DateContextProvider = ({
@@ -62,7 +67,7 @@ const DateContextProvider = ({
 
   const [dayHover, setDayHover] = useState<string | null | undefined>(null)
 
-  const [valueS, setValueS] = useState({
+  const [valueS, setValueS] = useState<any>({
     startDate: null,
     endDate: null
   })
@@ -85,7 +90,10 @@ const DateContextProvider = ({
     setDaysF(days)
   }
 
-  const onChange = (valueS: { startDate: null, endDate: null }): void => {
+  const onChange = (valueS?: {
+    startDate?: MomentInput | null
+    endDate?: MomentInput | null
+  }): void => {
     setValueS(valueS)
   }
 

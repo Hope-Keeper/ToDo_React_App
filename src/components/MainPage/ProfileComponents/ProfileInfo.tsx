@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable multiline-ternary */
@@ -18,10 +19,10 @@ import Input from '../../Common/Input/Input'
 import Cookies from 'universal-cookie'
 
 interface ProfileInfoProps {
-  messageFunction: () => void
+  messageFunction: (text: string, type: string) => any
 }
 
-const ProfileInfo = ({ messageFunction }: ProfileInfoProps): void => {
+const ProfileInfo = ({ messageFunction }: ProfileInfoProps): any => {
   const cookies = new Cookies()
   const id = cookies.get('id')
 
@@ -108,7 +109,7 @@ const ProfileInfo = ({ messageFunction }: ProfileInfoProps): void => {
     }
   }, [getUser])
 
-  const onSubmit = methods.handleSubmit((data) => {
+  const onSubmit: any = methods.handleSubmit((data) => {
     setIsSending(true)
 
     if (profileImageFile != null) {
@@ -151,13 +152,13 @@ const ProfileInfo = ({ messageFunction }: ProfileInfoProps): void => {
     setIsSending(false)
   }
 
-  const handleInfoSubmit = async (data: {
+  const handleInfoSubmit: any = async (data: {
     id?: number
     first_name?: string
     last_name?: string
     phone_number?: string
     thumbnail?: null
-  }): Promise<void> => {
+  }): Promise<any> => {
     try {
       await UpdateInfo(data).unwrap()
       messageFunction('اطلاعات با موفقیت تغییر کرد', 'success')

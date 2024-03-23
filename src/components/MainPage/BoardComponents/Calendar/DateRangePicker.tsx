@@ -13,7 +13,7 @@ import { DatepickerContext } from '../../../../contexts/DateContextProvider'
 const DateRangePicker = ({
   setShowCalendar
 }: {
-  setShowCalendar?: Dispatch<SetStateAction<boolean>>
+  setShowCalendar: Dispatch<SetStateAction<boolean>>
 }): JSX.Element => {
   // Date Start
   moment.locale('fa')

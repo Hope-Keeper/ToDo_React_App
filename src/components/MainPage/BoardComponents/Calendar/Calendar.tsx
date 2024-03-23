@@ -32,6 +32,7 @@ const Calendar = ({
   onClickPrevious,
   setShowCalendar
 }: {
+  value?: any
   date: string
   onClickPrevious: () => void
   onClickNext: () => void

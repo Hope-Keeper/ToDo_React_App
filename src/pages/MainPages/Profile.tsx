@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/member-delimiter-style */
+/* eslint-disable @typescript-eslint/indent */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable multiline-ternary */
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import { useState, type FunctionComponent } from 'react'
@@ -16,7 +19,7 @@ const Profile: FunctionComponent<ProfileProps> = () => {
     Array<{ text: string; type: string }>
   >([])
 
-  const setMessage = (text: string, type: string): (() => void) => {
+  const setMessage = (text: string, type: string): any => {
     setMessages((prev) => [...prev, { text, type }])
     const remove = setTimeout(() => {
       setMessages([])

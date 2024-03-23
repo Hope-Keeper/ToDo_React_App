@@ -7,8 +7,7 @@ const BoardsDropDown = ({
   boards,
   placeHolderText,
   className,
-  setSelected,
-  selected
+  setSelected
 }: {
   boards?: [] | undefined
   placeHolderText?: string

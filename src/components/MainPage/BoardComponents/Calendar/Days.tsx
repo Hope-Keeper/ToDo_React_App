@@ -158,7 +158,7 @@ const Days: React.FC<Props> = ({
       if (!maxDate) {
         return false
       }
-      const object = {
+      const object: any = {
         previous: previousMonth(calendarData.date),
         current: calendarData.date,
         next: nextMonth(calendarData.date)
@@ -266,7 +266,7 @@ const Days: React.FC<Props> = ({
       }`
 
       if (period?.start && !period.end) {
-        const hoverPeriod = { ...period, end: newHover }
+        const hoverPeriod: any = { ...period, end: newHover }
 
         if (moment(newHover).isBefore(moment(period.start))) {
           hoverPeriod.start = newHover
@@ -288,7 +288,7 @@ const Days: React.FC<Props> = ({
       }
 
       if (!period?.start && period?.end) {
-        const hoverPeriod = { ...period, start: newHover }
+        const hoverPeriod: any = { ...period, start: newHover }
 
         if (moment(newHover).isAfter(moment(period.end))) {
           hoverPeriod.start = period.end
@@ -339,8 +339,8 @@ const Days: React.FC<Props> = ({
       onClickDay,
       onClickNextDays,
       onClickPreviousDays,
-      period.end,
-      period.start
+      period?.end,
+      period?.start
     ]
   )
 
